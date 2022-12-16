@@ -43,11 +43,15 @@ html, body {
 @font-face {
     font-family: OpenSans;
     src: url(../fonts/OpenSans-Regular.woff);
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
-    font-family: OpenSansBold;
+    font-family: OpenSans;
     src: url(../fonts/OpenSans-Bold.woff);
+    font-style: normal;
+    font-weight: bold;
 }
 
 body {
@@ -61,9 +65,9 @@ a {
 }
 
 form input {
+    padding: 15px;
     background-color: #f4f7f6;
     border: 0;
-    padding: 15px;
 }
 
 form input:focus {
@@ -73,9 +77,9 @@ form input:focus {
 }
 
 button {
+    height: 45px;
     padding: 1em 2em;
     background-color: #b59f5b;
-    height: 45px;
     border: 0;
     color: white;
 }
@@ -85,7 +89,6 @@ button:hover {
 }
 
 h1, h2, h3, h4 {
-    font-family: "OpenSansBold";
     text-transform: uppercase;
 }
 
@@ -95,9 +98,9 @@ h1, h2, h3, h4 {
 }
 
 .content > header{
+    position: relative;
     width: 100%;
     height: auto;
-    position: relative;
     background-image: url("../images/banner-bg.jpg");
     background-size: cover;
     bachground-position: center center;
@@ -264,15 +267,27 @@ h1, h2, h3, h4 {
 }
 
 .trend-card-tags {
+    padding-left: 0;
+    margin: 0;
     font-size: var(--font-size-l);
+}
+.trend-card-tags>li {
+    list-style-type: none;
+    display: inline-block;
 }
 .trend-card-tag {
     color: #b59f5b;
+}
+.trend-card-tag:hover {
+    text-decoration: underline;
 }
 
 .trend-card-description {
     font-size: 20px;
     color: #ffffff;
+}
+.trend-card-description a:hover {
+    text-decoration: underline;
 }
 
 /* Новости */
@@ -302,7 +317,6 @@ h1, h2, h3, h4 {
 
 .news-card-tags {
     color: #baa566;
-    font-family: "OpenSansBold";
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
@@ -342,7 +356,6 @@ h1, h2, h3, h4 {
 .news-card-header .news-card-author {
     display: inline-block;
     font-size: 12px;
-    font-family: "OpenSansBold";
     font-weight: bold;
 }
 
@@ -477,7 +490,6 @@ h1, h2, h3, h4 {
     border: 2px solid #eeeeee;
     margin-right: 5px;
     color: inherit;
-    font-family: "OpenSansBold";
     font-size: 12px;
     line-height: 40px;
     font-weight: bold;
@@ -489,7 +501,6 @@ h1, h2, h3, h4 {
 
 .themes-list {
     padding: 0;
-    font-family: "OpenSansBold";
 }
 .themes-list-number {
     position: relative;
@@ -558,6 +569,9 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
+.product-picture {
+    width: 100%;
+}
 .product-image {
     width: calc(100% - 2em);
 }
@@ -588,6 +602,7 @@ h1, h2, h3, h4 {
 .product-description {
     font-size: var(--font-size-xl);
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .product-price {
@@ -602,11 +617,16 @@ h1, h2, h3, h4 {
     text-decoration: line-through;
 }
 
-.product-control>button {
+.product-link {
+    position: relative;
     font-size: var(--font-size-l);
     text-transform: uppercase;
     font-weight: bold;
     white-space: nowrap;
+    padding: 1em 2em;
+    background-color: #b59f5b;
+    border: 0;
+    color: white;
 }
 
 /*Footer*/
@@ -799,12 +819,13 @@ address {
     text-transform: uppercase;
 }
 
-@media (orientation: landscape) AND (min-width: 641px) AND (max-width: 1200px){
+@media (orientation: landscape) AND (max-width: 640px), (max-width: 1200px) {
     .trends {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
     }
     .trend {
-        width: calc(25% - 3px);
+        width: calc(50% - 3px);
+        margin-bottom: 6px;
     }
 }
 
@@ -818,17 +839,16 @@ address {
     }
 }
 
-@media (orientation: landscape) AND (max-width: 640px), (max-width: 768px) {
+@media (orientation: landscape) AND (min-width: 641px) AND (max-width: 1200px){
     .trends {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
     .trend {
-        width: calc(50% - 3px);
-        margin-bottom: 6px;
+        width: calc(25% - 3px);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     /*.sidebar {
         display:none;
     }*/
@@ -864,6 +884,8 @@ address {
     }
     .news-card {
         flex-wrap: wrap;
+        border-bottom: 1px solid #eeeeee;
+        margin-bottom: 25px;
     }
     .news-card-image {
         width: 100%;
@@ -882,16 +904,12 @@ address {
         width: calc(50% - 15px);
     }
 
-    .product-image {
-        width: 100%;
-    }
-
     .product:nth-child(1), .product:nth-child(2) {
         margin-bottom: 30px;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 640px) {
 
     .logo-image {
         width: 270px;
@@ -977,14 +995,16 @@ address {
         font-size: 0.8em;
     }
 
+    /* Sidebar */
+
+    .sidebar {
+        max-width: 100%;
+    }
+
     /* Products */
 
     .product {
         width: 100%;
-    }
-
-    .product-image {
-        width: calc(100% - 2em);
     }
 
     .products>h3 {
@@ -995,7 +1015,7 @@ address {
         font-size: 0.85em;
     }
 
-    .product-control>button{
+    .product-link{
         font-size: 0.7em;
     }
 
